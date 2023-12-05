@@ -33,13 +33,13 @@ enterCombinationButton.addEventListener("click", function() {
 
         // create treasure image element
         let goldChestTreasureImage = document.createElement('img');
-        goldChestTreasureImage.src = "https://images.unsplash.com/photo-1610375461369-d613b564f4c4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRyZWFzdXJlJTIwY2hlc3R8ZW58MHx8MHx8fDA%3D";
+        goldChestTreasureImage.src = "treasure.jpeg";
         goldChestTreasureImage.classList.add('mx-auto', 'd-block', 'w-75', 'treasureImg', 'mb-2');
         lastElement.appendChild(goldChestTreasureImage);
 
         // create stolen treasure image element
         let stolenTreasureImage = document.createElement('img');
-        stolenTreasureImage.src = "https://static.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/0/0a/C5002.png";
+        stolenTreasureImage.src = "https://cdn.imgbin.com/16/21/12/imgbin-nami-one-piece-treasure-cruise-one-piece-world-seeker-monkey-d-luffy-one-piece-jXVy1d7Nk9hxTQP1135gLGrpS.jpg";
         stolenTreasureImage.classList.add('mx-auto', 'd-block', 'w-75', 'treasureImg', 'mb-2', 'd-none');
         lastElement.appendChild(stolenTreasureImage);
 
