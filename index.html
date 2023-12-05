@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://images.unsplash.com/photo-1632809199725-72a4245e846b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJlYXN1cmUlMjBjaGVzdHxlbnwwfHwwfHx8MA%3D%3D"
+    />
+    <title>Shaq's Secret Vault</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="text-center" style="color: darkgoldenrod">Welcome To Shaq's Secret Vault</h1>
+      
+      <div class="row w-100 d-flex justify-content-center">
+        <img class="w-75 treasureChestImg" src="https://images.unsplash.com/photo-1632809199725-72a4245e846b?D" alt="My Treasure">
+      </div>
+
+      <div class="pt-2 row justify-content-center">
+        <button type="button" id="hintOne" class="col col-3 btn m-1 buttonColor">Hint 1</button>
+        <button type="button" id="hintTwo" class="col col-3 btn m-1 buttonColor">Hint 2</button>
+        <button type="button" id="hintThree" class="col col-3 btn m-1 buttonColor">Hint 3</button>
+      </div3>
+
+      <div class="row w-100 d-flex justify-content-center pt-2">
+        <button type="button" id="treasureButton" class="w-25 btn buttonColor">Enter The Combination</button>
+      </div>
+    </div>
+
+    <div id="lastElement"></div>
+
+    <!-- Have to put the script at the END OF THE HTML SO EVEY ELEMENT IS LOADED -->
+    <script src="script.js"></script>
+  </body>
+</html>

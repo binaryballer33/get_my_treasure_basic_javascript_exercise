@@ -1,0 +1,22 @@
+.buttonColor {
+    background-color: black;
+    color: darkgoldenrod;
+}
+
+.buttonColor:hover {
+    background-color: darkgoldenrod;
+    color: black;
+}
+
+.treasureImageDiv {
+    display: flex;
+    width: 100%;
+}
+
+.treasureChestImg {
+    max-height: 600px;
+}
+
+.treasureImg {
+    max-height: 700px;
+}
