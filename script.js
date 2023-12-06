@@ -36,7 +36,7 @@ function createElement(htmlElement, classList, innerHTML, src) {
 
 function combinationCorrect() {
     // create vault opened h2 element
-    let vaultOpenedHeader = createElement('h2', ['text-center', 'text-success'], 'You have opened the vault!');
+    let vaultOpenedHeader = createElement('h2', ['text-center'], 'You have opened the vault!');
     lastElement.appendChild(vaultOpenedHeader);
 
     // create treasure image element
@@ -45,15 +45,15 @@ function combinationCorrect() {
 
     // create stolen treasure image element
     const stolenTreasureImageSrc = "https://cdn.imgbin.com/16/21/12/imgbin-nami-one-piece-treasure-cruise-one-piece-world-seeker-monkey-d-luffy-one-piece-jXVy1d7Nk9hxTQP1135gLGrpS.jpg"
-    let stolenTreasureImage = createElement('img', ['treasureImg', 'd-none'], "", stolenTreasureImageSrc);
+    let stolenTreasureImage = createElement('img', ['treasureImg', 'd-none', 'mt-3'], "", stolenTreasureImageSrc);
     lastElement.appendChild(stolenTreasureImage);
 
     // create congradutlations header element
-    let congradulationsHeader = createElement('h3', ['text-center', 'text-success'], 'Congratulations On Finding My Treasure, You Have Done Well 😁!', "");
+    let congradulationsHeader = createElement('h3', ['text-center'], 'Congratulations On Finding My Treasure, You Have Done Well 😁!', "");
     lastElement.appendChild(congradulationsHeader);
     
     // create stolen treasure header element
-    let stolenTreasureHeader = createElement('h3', ['text-center', 'text-success', 'd-none'], "Your Treasue Has Just Been Stolen By Nami And The Straw Hats 😁!", "");
+    let stolenTreasureHeader = createElement('h3', ['text-center', 'd-none'], "Your Treasue Has Just Been Stolen By Nami And The Straw Hats 😁!", "");
     lastElement.appendChild(congradulationsHeader);
 
     // create the more treasure button element
@@ -80,12 +80,12 @@ function combinationCorrect() {
         goldChestTreasureImage.remove();
         congradulationsHeader.remove();
         moreTreasureButton.remove();
-    }, 5000)
+    }, 6000)
 }
 
 function combinationWrong() {
     // create taunting header element
-    let tauntingHeader = createElement('h2', ['text-center', 'text-danger'], "I knew you couldn't open my vault.");
+    let tauntingHeader = createElement('h2', ['text-center'], "I knew you couldn't open my vault.");
     lastElement.appendChild(tauntingHeader);
 
     // create taunting image element
@@ -96,7 +96,7 @@ function combinationWrong() {
     setTimeout(() => {
         tauntingHeader.remove();
         tauntingImage.remove();
-    }, 3000)
+    }, 6000)
 }
 
 enterCombinationButton.addEventListener("click", function() {

@@ -1,5 +1,5 @@
 body {
-    background-color: #bfbbae;
+    background-color: #7c7a71;
 }
 
 .buttonColor {
@@ -28,4 +28,10 @@ body {
     margin-bottom: 2px;
     display: block;
     width: 75%;
+}
+
+@media screen and (max-width: 460px) {
+    #treasureButton {
+        font-size: x-small;
+    }
 }
