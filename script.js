@@ -1,3 +1,4 @@
+// query the document to get the elements
 const hintOne = document.getElementById('hintOne');
 const hintTwo = document.getElementById('hintTwo');
 const hintThree = document.getElementById('hintThree');
@@ -6,6 +7,7 @@ const lastElement = document.getElementById('lastElement');
 const secretCombination = "000";
 let combinationGuess;
 
+// add event listeners to the hint buttons
 hintOne.addEventListener("click", function() {
     alert("What is -6 + 6?")
 })
@@ -18,68 +20,94 @@ hintThree.addEventListener("click", function() {
     alert("What is 0 / 69?")
 })
 
+// reduce the code needed to create elements
+function createElement(htmlElement, classList, innerHTML, src) {
+    let element = document.createElement(htmlElement);
+
+    if (Array.isArray(classList)) classList.forEach(className => element.classList.add(className))
+    if (!Array.isArray(classList)) element.classList.add(classList)
+    
+    if (innerHTML !== undefined) element.innerHTML = innerHTML;
+
+    if (src !== undefined) element.src = src;
+    
+    return element;
+}
+
+function combinationCorrect() {
+    // create vault opened h2 element
+    let vaultOpenedHeader = createElement('h2', ['text-center', 'text-success'], 'You have opened the vault!');
+    lastElement.appendChild(vaultOpenedHeader);
+
+    // create treasure image element
+    let goldChestTreasureImage = createElement('img', ['treasureImg'], "", 'treasure.jpeg');
+    lastElement.appendChild(goldChestTreasureImage);
+
+    // create stolen treasure image element
+    const stolenTreasureImageSrc = "https://cdn.imgbin.com/16/21/12/imgbin-nami-one-piece-treasure-cruise-one-piece-world-seeker-monkey-d-luffy-one-piece-jXVy1d7Nk9hxTQP1135gLGrpS.jpg"
+    let stolenTreasureImage = createElement('img', ['treasureImg', 'd-none'], "", stolenTreasureImageSrc);
+    lastElement.appendChild(stolenTreasureImage);
+
+    // create congradutlations header element
+    let congradulationsHeader = createElement('h3', ['text-center', 'text-success'], 'Congratulations On Finding My Treasure, You Have Done Well 😁!', "");
+    lastElement.appendChild(congradulationsHeader);
+    
+    // create stolen treasure header element
+    let stolenTreasureHeader = createElement('h3', ['text-center', 'text-success', 'd-none'], "Your Treasue Has Just Been Stolen By Nami And The Straw Hats 😁!", "");
+    lastElement.appendChild(congradulationsHeader);
+
+    // create the more treasure button element
+    let moreTreasureButton = createElement('button', ['btn', 'btn-success', 'mx-auto', 'd-block', 'mb-2', 'buttonColor'], "HURRY CLICK TO GET MORE TREASURE!!!");
+    lastElement.appendChild(moreTreasureButton);
+
+    // more treasure button event listener
+    moreTreasureButton.addEventListener("click", function() {
+        stolenTreasureHeader.classList.remove('d-none');
+        stolenTreasureImage.classList.remove('d-none');
+        lastElement.replaceChild(stolenTreasureImage, goldChestTreasureImage);
+        lastElement.replaceChild(stolenTreasureHeader, congradulationsHeader);
+        vaultOpenedHeader.remove();
+        moreTreasureButton.remove();
+
+        setTimeout(() => {
+            stolenTreasureHeader.remove();
+            stolenTreasureImage.remove();
+        }, 10000)
+    })
+
+    setTimeout(() => {
+        vaultOpenedHeader.remove();
+        goldChestTreasureImage.remove();
+        congradulationsHeader.remove();
+        moreTreasureButton.remove();
+    }, 5000)
+}
+
+function combinationWrong() {
+    // create taunting header element
+    let tauntingHeader = createElement('h2', ['text-center', 'text-danger'], "I knew you couldn't open my vault.");
+    lastElement.appendChild(tauntingHeader);
+
+    // create taunting image element
+    const tauntingImageSrc = "https://images4.alphacoders.com/117/1171340.jpg"
+    let tauntingImage = createElement('img', 'treasureImg', "", tauntingImageSrc);
+    lastElement.appendChild(tauntingImage);
+
+    setTimeout(() => {
+        tauntingHeader.remove();
+        tauntingImage.remove();
+    }, 3000)
+}
+
 enterCombinationButton.addEventListener("click", function() {
     // clear the last element of any elements previously added on a different click
     lastElement.innerHTML = "";
-
     combinationGuess = prompt("You have received this message because you have been chosen to open an important vault. Please enter the secret combination to continue.")
 
     if (combinationGuess === secretCombination) {
-        // create h2 element
-        let vaultOpenedHeader = document.createElement('h2');
-        vaultOpenedHeader.innerHTML = "You have opened the vault!";
-        vaultOpenedHeader.classList.add('text-center', 'text-success');
-        lastElement.appendChild(vaultOpenedHeader);
-
-        // create treasure image element
-        let goldChestTreasureImage = document.createElement('img');
-        goldChestTreasureImage.src = "treasure.jpeg";
-        goldChestTreasureImage.classList.add('mx-auto', 'd-block', 'w-75', 'treasureImg', 'mb-2');
-        lastElement.appendChild(goldChestTreasureImage);
-
-        // create stolen treasure image element
-        let stolenTreasureImage = document.createElement('img');
-        stolenTreasureImage.src = "https://cdn.imgbin.com/16/21/12/imgbin-nami-one-piece-treasure-cruise-one-piece-world-seeker-monkey-d-luffy-one-piece-jXVy1d7Nk9hxTQP1135gLGrpS.jpg";
-        stolenTreasureImage.classList.add('mx-auto', 'd-block', 'w-75', 'treasureImg', 'mb-2', 'd-none');
-        lastElement.appendChild(stolenTreasureImage);
-
-        // create congradutlations header element
-        let congradulationsHeader = document.createElement('h3');
-        congradulationsHeader.innerHTML = "Congratulations On Finding My Treasure, You Have Done Well 😁!";
-        congradulationsHeader.classList.add('text-center', 'text-success');
-        lastElement.appendChild(congradulationsHeader);
-        
-        // create stolen treasure header element
-        let stolenTreasureHeader = document.createElement('h3');
-        stolenTreasureHeader.innerHTML = "Your Treasue Has Just Been Stolen By Nami And The Straw Hats 😁!";
-        stolenTreasureHeader.classList.add('text-center', 'text-success', 'd-none');
-        lastElement.appendChild(congradulationsHeader);
-
-        // create button element
-        let moreTreasureButton = document.createElement('button');
-        moreTreasureButton.innerHTML = "Click To Get More Treasure";
-        moreTreasureButton.classList.add('btn', 'btn-success', 'mx-auto', 'd-block', 'mb-2', 'buttonColor');
-        lastElement.appendChild(moreTreasureButton);
-
-        moreTreasureButton.addEventListener("click", function() {
-            stolenTreasureHeader.classList.remove('d-none');
-            stolenTreasureImage.classList.remove('d-none');
-            lastElement.replaceChild(stolenTreasureImage, goldChestTreasureImage);
-            lastElement.replaceChild(stolenTreasureHeader, congradulationsHeader);
-        })
-
+        combinationCorrect();
     } else {
-        // create taunting header element
-        let tauntingHeader = document.createElement('h2');
-        tauntingHeader.innerHTML = "I knew you couldn't open my vault.";
-        tauntingHeader.classList.add('text-center', 'text-danger');
-        lastElement.appendChild(tauntingHeader);
-
-        // create taunting image element
-        let tauntingImage = document.createElement('img');
-        tauntingImage.src = "https://images4.alphacoders.com/117/1171340.jpg";
-        tauntingImage.classList.add('mx-auto', 'd-block', 'w-75', 'treasureImg', 'mb-2');
-        lastElement.appendChild(tauntingImage);
+        combinationWrong();
     }
 })
 
